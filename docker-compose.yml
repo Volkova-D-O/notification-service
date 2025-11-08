@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+    notification-service:
+        hostname: notification-service
+        container_name: notification-service
+        build:
+            context: .
+            dockerfile: dockerfile-notification-service
+        ports:
+        - "8081:8081"
+        env_file: 
+        - ./.env
+        environment:
+            spring_datasource_username:
+            SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+        networks: 
+          - default
+          - my_shared_kafka_network 
+        
+
+
+networks:
+    my_shared_kafka_network:
+        name: "kafka-folder_default"
+        external: true

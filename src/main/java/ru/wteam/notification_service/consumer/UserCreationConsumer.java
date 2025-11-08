@@ -19,7 +19,7 @@ public class UserCreationConsumer {
         log.info("Recieved message of creation {}", email);
 
         mailSender.send(email,
-                "Создание аккаунта",
-                "Здравствуйте!\nВаш аккаунт был успешно создан.");
+                "User creation",
+                "Hi! Welcome!.");
     }
 }
